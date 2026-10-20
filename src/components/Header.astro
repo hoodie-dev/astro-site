@@ -1,0 +1,145 @@
+
+---
+const navLinks = [
+  { label: "Services", href: "#services" },
+  { label: "Why BrightNest", href: "#why-brightnest" },
+  { label: "Reviews", href: "#reviews" },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-brand-forest/10 bg-brand-cream/95 backdrop-blur">
+  <div class="mx-auto flex min-h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
+    <!-- Brand -->
+    <a
+      href="/"
+      class="flex shrink-0 items-center gap-3 rounded-sm"
+      aria-label="BrightNest Cleaning Co. home"
+    >
+      <span class="flex size-11 items-center justify-center rounded-xl bg-brand-forest text-brand-white">
+        <svg
+          viewBox="0 0 24 24"
+          class="size-7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 21V12" />
+          <path d="M12 15C5 15 4 9 4 6c5 0 8 3 8 9Z" />
+          <path d="M12 12c0-5 3-8 8-8 0 5-2 9-8 9" />
+        </svg>
+      </span>
+
+      <span class="leading-tight">
+        <span class="block text-lg font-bold tracking-tight text-brand-forest sm:text-xl">
+          BrightNest
+        </span>
+        <span class="mt-1 block text-[10px] font-semibold tracking-[0.2em] text-brand-muted">
+          CLEANING CO.
+        </span>
+      </span>
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav aria-label="Main navigation" class="hidden items-center gap-8 md:flex">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-brand-ink transition-colors hover:text-brand-forest"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA -->
+    <a
+      href="#contact"
+      class="hidden items-center justify-center rounded-full bg-brand-forest px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-forest-dark focus-visible:outline-offset-4 md:inline-flex"
+    >
+      Get a Free Quote
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-button"
+      type="button"
+      class="group flex size-11 items-center justify-center rounded-lg text-brand-forest transition-colors hover:bg-brand-sage focus-visible:outline-offset-2 md:hidden"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="flex w-6 flex-col items-center gap-[5px]" aria-hidden="true">
+        <span class="h-0.5 w-6 rounded-full bg-current transition-transform duration-200 group-aria-expanded:translate-y-[7px] group-aria-expanded:rotate-45"></span>
+        <span class="h-0.5 w-6 rounded-full bg-current transition-opacity duration-200 group-aria-expanded:opacity-0"></span>
+        <span class="h-0.5 w-6 rounded-full bg-current transition-transform duration-200 group-aria-expanded:-translate-y-[7px] group-aria-expanded:-rotate-45"></span>
+      </span>
+    </button>
+  </div>
+
+  <!-- Mobile navigation -->
+  <nav
+    id="mobile-menu"
+    aria-label="Mobile navigation"
+    hidden
+    class="border-t border-brand-forest/10 bg-brand-cream px-5 pb-6 pt-3 md:hidden sm:px-8"
+  >
+    <div class="mx-auto flex max-w-7xl flex-col">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="border-b border-brand-forest/10 py-4 text-base font-medium text-brand-ink transition-colors hover:text-brand-forest"
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <a
+        href="#contact"
+        class="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-brand-forest px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-forest-dark"
+      >
+        Get a Free Quote
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuButton = document.querySelector<HTMLButtonElement>(
+    "#mobile-menu-button",
+  );
+
+  const mobileMenu = document.querySelector<HTMLElement>("#mobile-menu");
+
+  if (menuButton && mobileMenu) {
+    const closeMenu = () => {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open navigation menu");
+      mobileMenu.hidden = true;
+    };
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Open navigation menu" : "Close navigation menu",
+      );
+
+      mobileMenu.hidden = isOpen;
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  }
+</script>

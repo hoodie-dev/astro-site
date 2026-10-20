@@ -1,0 +1,85 @@
+
+---
+import ServiceCard from "./ServiceCard.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "Residential Cleaning",
+    icon: "house",
+    description:
+      "Keep your everyday spaces feeling fresh and comfortable with routine cleaning tailored to your home's needs.",
+  },
+  {
+    number: "02",
+    title: "Deep Cleaning",
+    icon: "sparkles",
+    description:
+      "Give kitchens, bathrooms, and other buildup-prone areas extra attention when your home needs a more thorough clean.",
+  },
+  {
+    number: "03",
+    title: "Move-In / Move-Out Cleaning",
+    icon: "key",
+    description:
+      "Prepare a space for its next chapter with a detailed clean before moving in or after moving out.",
+  },
+] as const;
+---
+
+<section
+  id="services"
+  aria-labelledby="services-title"
+  class="scroll-mt-24 bg-brand-sage/40 px-5 py-20 sm:px-8 sm:py-24 lg:px-10"
+>
+  <div class="mx-auto max-w-7xl">
+    <!-- Section heading -->
+    <div class="mx-auto max-w-2xl text-center">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-forest sm:text-sm"
+      >
+        How we can help
+      </p>
+
+      <h2
+        id="services-title"
+        class="mt-4 text-3xl font-bold tracking-tight text-brand-forest sm:text-4xl lg:text-5xl"
+      >
+        Cleaning that fits your life.
+      </h2>
+
+      <p class="mt-5 text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
+        From regular upkeep to a fresh start, find the cleaning service that
+        works for your home and your routine.
+      </p>
+    </div>
+
+    <!-- Service cards -->
+    <div class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+      {services.map((service) => (
+        <ServiceCard {...service} />
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div
+      class="mt-10 flex flex-col items-center justify-between gap-5 rounded-2xl border border-brand-forest/10 bg-brand-cream p-6 text-center sm:p-8 md:flex-row md:text-left"
+    >
+      <div>
+        <h3 class="text-lg font-bold text-brand-forest sm:text-xl">
+          Not sure which service you need?
+        </h3>
+        <p class="mt-2 text-sm leading-6 text-brand-muted sm:text-base">
+          Tell us a little about your home and we'll help you explore your options.
+        </p>
+      </div>
+
+      <a
+        href="#contact"
+        class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-brand-forest px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-forest-dark"
+      >
+        Let's Talk
+      </a>
+    </div>
+  </div>
+</section>

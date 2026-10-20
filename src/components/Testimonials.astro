@@ -1,0 +1,136 @@
+
+---
+const reviews = [
+  {
+    title: "Care in the details",
+    quote:
+      "[Placeholder] Add an approved customer review describing their experience with routine home cleaning.",
+    service: "Residential Cleaning",
+  },
+  {
+    title: "A smoother routine",
+    quote:
+      "[Placeholder] Add genuine feedback about the booking process, communication, or cleaning experience.",
+    service: "Deep Cleaning",
+  },
+  {
+    title: "A fresh start",
+    quote:
+      "[Placeholder] Add an approved review from a customer who used a move-in or move-out cleaning service.",
+    service: "Move-In / Move-Out",
+  },
+];
+---
+
+<section
+  id="reviews"
+  aria-labelledby="reviews-title"
+  class="scroll-mt-24 bg-brand-sage/40 px-5 py-20 sm:px-8 sm:py-24 lg:px-10"
+>
+  <div class="mx-auto max-w-7xl">
+
+    <!-- Section introduction -->
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-2xl">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-forest sm:text-sm">
+          The customer experience
+        </p>
+
+        <h2
+          id="reviews-title"
+          class="mt-4 text-3xl font-bold leading-tight tracking-tight text-brand-forest sm:text-4xl lg:text-5xl"
+        >
+          A little care goes a long way.
+        </h2>
+
+        <p class="mt-5 max-w-xl text-base leading-7 text-brand-muted sm:text-lg sm:leading-8">
+          Choosing a cleaning service is personal. Genuine customer feedback
+          can help you understand what to expect before you book.
+        </p>
+      </div>
+
+      <div class="max-w-sm rounded-xl border border-brand-forest/10 bg-brand-cream p-4">
+        <p class="text-sm font-semibold text-brand-forest">
+          Reviews coming soon
+        </p>
+        <p class="mt-1 text-sm leading-6 text-brand-muted">
+          This demo uses clearly marked placeholders until verified customer
+          reviews are available.
+        </p>
+      </div>
+    </div>
+
+    <!-- Review cards -->
+    <div class="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+
+      {reviews.map((review) => (
+        <article
+          class="flex h-full flex-col rounded-2xl border border-brand-forest/10 bg-brand-cream p-6 shadow-sm sm:p-7"
+        >
+          <div class="flex items-center justify-between gap-3">
+            <span class="flex size-11 items-center justify-center rounded-full bg-brand-sage text-brand-forest">
+              <svg
+                viewBox="0 0 24 24"
+                class="size-6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M10 11H5V6h5v5Zm9 0h-5V6h5v5ZM5 11c0 4-1 6-3 7m12-7c0 4-1 6-3 7" />
+              </svg>
+            </span>
+
+            <span class="rounded-full border border-amber-700/20 bg-amber-50 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-900">
+              Demo placeholder
+            </span>
+          </div>
+
+          <h3 class="mt-6 text-xl font-bold tracking-tight text-brand-forest">
+            {review.title}
+          </h3>
+
+          <p class="mt-3 flex-1 text-sm leading-7 text-brand-muted sm:text-base">
+            {review.quote}
+          </p>
+
+          <div class="mt-6 border-t border-brand-forest/10 pt-5">
+            <p class="text-sm font-semibold text-brand-forest">
+              Customer attribution to be added
+            </p>
+            <p class="mt-1 text-xs text-brand-muted">
+              {review.service}
+            </p>
+          </div>
+
+          <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900">
+            Illustrative content only — not a genuine customer testimonial.
+          </p>
+        </article>
+      ))}
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl bg-brand-forest p-6 text-white sm:p-8 md:flex-row md:items-center">
+      <div>
+        <h3 class="text-xl font-bold sm:text-2xl">
+          Have questions about our services?
+        </h3>
+        <p class="mt-2 text-sm leading-6 text-white/75 sm:text-base">
+          Let's talk about your home and the cleaning support you're looking for.
+        </p>
+      </div>
+
+      <a
+        href="#contact"
+        class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-forest transition-colors hover:bg-brand-sage focus-visible:outline-offset-4"
+      >
+        Get a Free Quote
+      </a>
+    </div>
+
+  </div>
+</section>
