@@ -115,7 +115,14 @@ const services = [
           </p>
         </div>
 
-        <form id="contact-form" class="space-y-5">
+        <form
+          id="contact-form"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          class="space-y-5"
+        >
+          <input type="hidden" name="form-name" value="contact" />
           <div class="grid gap-5 sm:grid-cols-2">
             <div>
               <label for="contact-name" class="mb-2 block text-sm font-semibold text-brand-ink">
@@ -191,7 +198,7 @@ const services = [
             type="submit"
             class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-forest px-6 py-3.5 font-semibold text-white transition hover:bg-brand-forest-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-forest sm:w-auto"
           >
-            Validate demo enquiry
+            Submit test enquiry
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
             </svg>
@@ -205,8 +212,7 @@ const services = [
           ></p>
 
           <p class="text-xs leading-5 text-brand-muted">
-            Demo only: this form currently validates your entries in the browser.
-            It does not send or store your message.
+            Demo site: form submissions may be recorded by Netlify, but delivery to a business owner has not been configured or verified. Please do not enter sensitive or real customer information.
           </p>
         </form>
       </div>
@@ -220,14 +226,11 @@ const services = [
     "#contact-form-status",
   );
 
-  form?.addEventListener("submit", (event) => {
-    // Native browser validation runs before this submit event.
-    event.preventDefault();
-
+  form?.addEventListener("submit", () => {
     if (!status) return;
 
     status.textContent =
-      "Validation successful! This is a demo only, so your message has not been sent. Connect a form service before using this website for real enquiries.";
+      "Submitting your enquiry... Please wait for confirmation.";
     status.classList.remove("hidden");
   });
 </script>
